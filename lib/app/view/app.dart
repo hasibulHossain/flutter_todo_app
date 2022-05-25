@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todo_app/app/routes/app_routes.dart';
-import 'package:flutter_todo_app/modules/home/home.dart';
+import 'package:flutter_todo_app/screens/home/home.dart';
 import 'package:flutter_todo_app/services/demo_service.dart';
 
 class App extends StatelessWidget {
