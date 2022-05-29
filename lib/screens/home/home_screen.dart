@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './view/view.dart' show TodoList;
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class Home extends StatelessWidget {
         title: const Text('Todo'),
       ),
       body: Container(
-        child: Center(child: Text('Home'),),
+        child: TodoList(),
       ),
     );
   }
