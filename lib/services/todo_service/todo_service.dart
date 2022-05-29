@@ -7,7 +7,7 @@ class TodoService {
     TodoModel(title: 'third todo', createdOn: DateTime.now(), updatedOn: DateTime.now(),),
   ];
 
-  List<TodoModel> get todo {
+  List<TodoModel> get todoList {
     return [..._todo];
   }
   
