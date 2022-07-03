@@ -1,2 +1,2 @@
-export './cubit/home_cubit.dart';
+export './bloc/home_bloc_bloc.dart';
 export './home_screen.dart';

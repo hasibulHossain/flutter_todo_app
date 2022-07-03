@@ -1,5 +1,6 @@
 class TodoModel {
   TodoModel({
+    required this.id,
     required this.title,
     this.description,
     this.isComplete = false,
@@ -8,6 +9,7 @@ class TodoModel {
     this.deletedAt,
   });
 
+  final String id;
   final String title;
   final String? description;
   final bool isComplete;

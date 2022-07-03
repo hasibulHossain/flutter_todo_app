@@ -21,11 +21,12 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Todo'),
       ),
-      body: BlocBuilder<HomeCubit, HomeState>(
+      body: BlocBuilder<HomeBloc, HomeBlocState>(
         builder: (context, state) {
-          if(state is HomeLoadSuccess) {
+          print('state => $state');
+          if(state.status == HomeBlocStatus.success) {
             return Container(
-              child: TodoList(todoList: state.todo,),
+              child: TodoList(todoList: state.todos,),
             );
           }
 
