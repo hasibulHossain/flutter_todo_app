@@ -4,15 +4,31 @@ import '../../widgets/widgets.dart' show Todo;
 
 class TodoList extends StatelessWidget {
   const TodoList({ Key? key, required this.todoList }) : super(key: key);
-  final List<TodoModel> todoList;
+  final Stream<List<TodoModel>>? todoList;
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: todoList.length,
-      itemBuilder: (context, index) {
-        return Todo(todo: todoList[index]);
-      },
+    if(todoList == null) {
+      return Text('No todo found');
+    }
+
+    return StreamBuilder(
+      stream: todoList,
+      builder: (context, snapshot) {
+        if(snapshot.connectionState == ConnectionState.active) {
+          var todoList =  snapshot.data as List<TodoModel>;
+
+          return ListView.builder(
+            itemCount: todoList.length,
+            itemBuilder: (context, index) {
+              return Todo(todo: todoList[index]);
+            },
+          );
+        }
+        print('snapshot.data => ${snapshot.data} ');
+        print(snapshot.connectionState);
+        return Text('Loading...');
+      }
     );
   }
 }

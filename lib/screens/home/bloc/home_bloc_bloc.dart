@@ -21,18 +21,18 @@ class HomeBloc extends Bloc<HomeBlocEvent, HomeBlocState> {
     LoadTodoEvent event,
     Emitter<HomeBlocState> emit
   ) async {
-    emit(state.copyWith(status: HomeBlocStatus.loading));
+    emit(state.copyWith(status: HomeBlocStatus.success, todos: _todoService.todoList()));
 
-    await emit.forEach<List<TodoModel>>(
-      _todoService.todoList(), 
-      onData: (todos) => state.copyWith(
-        status: HomeBlocStatus.success,
-        todos: todos,
-      ),
-      onError: (_, __) => state.copyWith(
-        status: HomeBlocStatus.failure,
-      )
-    );
+    // await emit.forEach<List<TodoModel>>(
+    //   _todoService.todoList(), 
+    //   onData: (todos) => state.copyWith(
+    //     status: HomeBlocStatus.success,
+    //     todos: todos,
+    //   ),
+    //   onError: (_, __) => state.copyWith(
+    //     status: HomeBlocStatus.failure,
+    //   )
+    // );
   }
 
   void _deleteTodo(
@@ -43,5 +43,10 @@ class HomeBloc extends Bloc<HomeBlocEvent, HomeBlocState> {
     _todoService.deleteTodo(event.todo.id);
   }
 
-
+  @override
+  Future<void> close() {
+    _todoService.close();
+    // TODO: implement close
+    return super.close();
+  }
 }

@@ -29,6 +29,10 @@ class TodosApi {
 
     print('stream => ${_todoStreamController.value}');
   }
+
+  void close() {
+    _todoStreamController.close();
+  }
 }
 
 class TodoNotFoundException implements Exception {}

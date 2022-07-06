@@ -10,6 +10,8 @@ class TodoService {
 
   void deleteTodo(String id) => _todosApi.deleteTodo(id);
 
+  void close() => _todosApi.close();
+
   // void deleteTodo(String id) {
   //   final foundIndex = _todo.indexWhere((element) => element.id == id);
   //   if(foundIndex == -1) return;

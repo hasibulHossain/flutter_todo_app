@@ -6,18 +6,18 @@ enum HomeBlocStatus {initial, loading, success, failure}
 
 class HomeBlocState extends Equatable {
   const HomeBlocState({
-    this.todos = const [],
+    this.todos,
     this.status = HomeBlocStatus.initial,
     this.lastDeletedTodo
   });
 
   final HomeBlocStatus status;
-  final List<TodoModel> todos;
+  final Stream<List<TodoModel>>? todos;
   final TodoModel? lastDeletedTodo;
 
   HomeBlocState copyWith({
     HomeBlocStatus? status,
-    List<TodoModel>? todos,
+    Stream<List<TodoModel>>? todos,
     TodoModel? lastDeletedTodo,
   }) {
     return HomeBlocState(
